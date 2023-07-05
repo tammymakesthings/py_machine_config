@@ -1,0 +1,17 @@
+# Configuration for "blink build" machine.
+configuration "blink build machine" {
+	constraints {
+		operating system "linux";
+	}
+	preinstall {
+		run shell command "echo \"in the pre-install phase\"";
+	}
+	steps {
+		ensure system packages build-essential, python3-dev-all, python3-pip, python3-setuptools, python3-wheel;
+		update python packages setuptools, wheel, pip;
+		install python packages numpy, scipy, sympy, ptipython, ipdb, ipdbugger;
+	}
+	postinstall {
+		run shell command "echo \"in the post-install phase\"";
+	}
+}

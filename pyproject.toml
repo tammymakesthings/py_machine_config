@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "py-machine-config"
+version = "0.1.0"
+description = "Simple Machine Configuration in Python"
+authors = ["Tammy Cravit <tammy@tammymakesthings.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "py_machine_config"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "*"
+jinja2 = "*"
+tomli = "*"
+sly = "*"
+
+[tool.poetry.group.dev.dependencies]
+watchdog = "*"
+flake8 = "*"
+tox = "*"
+coverage = "*"
+pip = "*"
+bump2version = "*"
+wheel = "*"
+ipdbugger = "*"
+ipdb = "*"
+ptipython = "*"
+black = "*"
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+pytest-click = "*"
+
+[tool.poetry.group.documentation.dependencies]
+sphinx = "*"
+twine = "*"
+sphinx-rtd-theme = "*"
+
+[tool.pytest.ini_options]
+addopts = "-ra -q -m \"not integration and not slow and not destructive\" --cov=py_machine_config"
+markers = [
+	"integration: marks tests as integration tests (run with 'poetry run pytest -m integration')",
+	"slow: marks tests as integration tests (run with 'poetry run pytest -m slow')",
+	"destructive: marks tests as destructive (run with 'poetry run pytest -m destructive')",
+]
+pythonpath = [
+	"py_machine_config",
+]
+testpaths = [
+	"tests",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
